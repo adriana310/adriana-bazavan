@@ -41,7 +41,7 @@ export default function DespreMine() {
         intro={
           <p>
             Lucrez cu oameni de toate vârstele de peste 15 ani, unu la unu, online și în București. Înainte să fac asta
-            în fiecare zi, am fost asistent de cercetare, ghid, coordonator de voluntari, am lucrat la un muzeu al
+            în fiecare zi, am fost asistent de cercetare, ghid turistic, coordonator de voluntari, am lucrat la un muzeu al
             literaturii și într-o corporație. Engleza a fost firul roșu prin toate.
           </p>
         }
@@ -99,7 +99,7 @@ export default function DespreMine() {
             className="mx-auto h-auto w-full"
           />
           <figcaption className="mt-6 text-verde-negru/75">
-            Vine din copilărie, de pe terenul de tenis. Îl păstrez în engleză, exact cum l-am învățat.
+            Vine din copilărie, din tenisul de performanță.
           </figcaption>
         </figure>
         <div className="mx-auto mt-10 max-w-2xl">

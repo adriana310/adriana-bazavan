@@ -25,7 +25,7 @@ export default function PentruAdulti() {
         intro={
           <p>
             Pentru un interviu, pentru munca într-un mediu internațional sau pentru drumurile prin lume. Lucrăm unu la
-            unu, online, ca să încapă în programul tău.
+            unu, online sau față în față, în ritmul tău.
           </p>
         }
       />

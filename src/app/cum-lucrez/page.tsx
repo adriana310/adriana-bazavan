@@ -147,7 +147,7 @@ export default function CumLucrez() {
         <div className="grid gap-5 md:grid-cols-2">
           {[
             { durata: "60 de minute", pret: "100 de lei", pentru: "ședința obișnuită" },
-            { durata: "90 de minute", pret: "150 de lei", pentru: "când avem de lucrat mai mult, de exemplu înaintea unui examen" },
+            { durata: "90 de minute", pret: "150 de lei", pentru: "când e nevoie de mai mult timp de lucru" },
           ].map((p) => (
             <div key={p.durata} className="rounded-[1.5rem] bg-white p-7">
               <p className="text-verde-negru/70">Ședință de {p.durata}</p>
@@ -179,7 +179,7 @@ export default function CumLucrez() {
           ))}
         </div>
         <div className="mt-8 max-w-3xl">
-          <DeCompletat>unde se țin orele față în față.</DeCompletat>
+          <DeCompletat>unde se țin orele față în față și ce primește omul în ședința de 90 de minute.</DeCompletat>
         </div>
       </Bloc>
 

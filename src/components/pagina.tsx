@@ -6,6 +6,7 @@ import { PictogramaWhatsApp } from "@/components/PictogramaWhatsApp";
 import { DateStructurate } from "@/components/DateStructurate";
 import { Distribuie } from "@/components/Distribuie";
 import { SimbolDecor } from "@/components/Simbol";
+import { Sclipiri, Stelute } from "@/components/Stelute";
 import { firimituri as schemaFirimituri } from "@/lib/schema";
 import { site } from "@/lib/site";
 
@@ -136,6 +137,13 @@ export function ScrietiMi({
   return (
     <section className="relative overflow-hidden bg-menta">
       <SimbolDecor className="absolute -bottom-24 -left-24 w-80 opacity-[0.14]" />
+      <Stelute
+        stele={[
+          { x: "44%", y: "14%", marime: 12 },
+          { x: "88%", y: "20%", marime: 14, culoare: "smarald" },
+          { x: "64%", y: "82%", marime: 10 },
+        ]}
+      />
       <Container className="relative flex flex-col gap-8 py-14 sm:py-16 md:flex-row md:items-center md:justify-between">
         <div className="apare max-w-xl">
           <h2 className="text-3xl sm:text-[2.3rem]">{titlu}</h2>
@@ -149,9 +157,10 @@ export function ScrietiMi({
           )}
         </div>
         <div className="flex flex-wrap gap-3">
-          <Buton href={site.whatsapp} target="_blank" rel="noopener">
+          <Buton href={site.whatsapp} target="_blank" rel="noopener" className="group relative">
             <PictogramaWhatsApp className="size-5" />
             Scrieți-mi pe WhatsApp
+            <Sclipiri />
           </Buton>
           <Buton href={site.telefonLink} varianta="contur" className="bg-white">
             <Pictograma nume="call" className="size-4" />

@@ -12,7 +12,7 @@ export type Fotografie = {
   focus?: string;
 };
 
-export const fotografii = {
+export const fotografii: Record<"intampinare" | "portret" | "laLucru", Fotografie> = {
   intampinare: {
     src: null,
     mobil: null,
@@ -26,4 +26,4 @@ export const fotografii = {
     src: null,
     alt: "Adriana Băzăvan pregătind o oră de engleză",
   },
-} satisfies Record<string, Fotografie>;
+};

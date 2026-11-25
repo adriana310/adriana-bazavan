@@ -73,9 +73,17 @@ export function PlayerAudio({ src, titlu }: { src: string; titlu: string }) {
   const procent = durata ? (pozitie / durata) * 100 : 0;
 
   return (
-    <div className="rounded-[1.5rem] bg-smarald p-5 text-white sm:p-6">
+    <div className="relative overflow-hidden rounded-[1.5rem] bg-smarald p-5 text-white sm:p-6">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/brand/simbol-alb.svg"
+        alt=""
+        aria-hidden
+        className={`pointer-events-none absolute -right-10 -top-10 w-44 opacity-10 ${canta ? "rotire-lenta" : ""}`}
+        style={{ animationDuration: "24s" }}
+      />
       <audio ref={audio} src={src} preload="metadata" />
-      <div className="flex items-center gap-4">
+      <div className="relative flex items-center gap-4">
         <button
           type="button"
           onClick={comuta}
@@ -110,7 +118,16 @@ export function PlayerAudio({ src, titlu }: { src: string; titlu: string }) {
           </div>
         </div>
       </div>
-      <div className="mt-4 flex items-center justify-center gap-2 sm:justify-start sm:pl-20">
+      <div className="relative mt-4 flex items-center justify-center gap-2 sm:justify-start sm:pl-20">
+        <div aria-hidden className="mr-auto hidden h-7 items-end gap-1 sm:flex">
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <span
+              key={i}
+              className={`h-full w-1 origin-bottom rounded-full bg-sofran ${canta ? "unda" : "scale-y-25"}`}
+              style={{ animationDelay: `${i * 130}ms` }}
+            />
+          ))}
+        </div>
         <button
           type="button"
           onClick={() => sari(-10)}

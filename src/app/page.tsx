@@ -11,6 +11,8 @@ import { InsignaPictograma, Pictograma, type NumePictograma } from "@/components
 import { SageataMana, SubliniereMana } from "@/components/Mana";
 import { Separator, SimbolDecor } from "@/components/Simbol";
 import { CardResursa } from "@/components/CardResursa";
+import { CaleidoscopViu } from "@/components/CaleidoscopViu";
+import { Sclipiri, Stelute } from "@/components/Stelute";
 import { Distribuie } from "@/components/Distribuie";
 import { resurse } from "@/lib/biblioteca";
 import { fotografii } from "@/lib/fotografii";
@@ -60,6 +62,17 @@ export default function Acasa() {
     <>
       {/* 1. Întâmpinarea */}
       <section className="relative overflow-hidden">
+        <Stelute
+          stele={[
+            { x: "4%", y: "10%", marime: 14 },
+            { x: "46%", y: "6%", marime: 10, culoare: "smarald" },
+            { x: "38%", y: "88%", marime: 16 },
+            { x: "92%", y: "8%", marime: 18 },
+            { x: "56%", y: "52%", marime: 9, culoare: "smarald" },
+            { x: "97%", y: "70%", marime: 12 },
+            { x: "62%", y: "92%", marime: 10, culoare: "smarald" },
+          ]}
+        />
         <Container className="grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:py-20">
           <div>
             <Supratitlu>{site.rol} · unu la unu · online și în București</Supratitlu>
@@ -76,9 +89,10 @@ export default function Acasa() {
               dumneavoastră primiți în scris ce am lucrat, ce teme are copilul și ce urmează.
             </p>
             <div className="relative mt-8 flex flex-wrap gap-3">
-              <Buton href={site.whatsapp} target="_blank" rel="noopener">
+              <Buton href={site.whatsapp} target="_blank" rel="noopener" className="group relative">
                 <PictogramaWhatsApp className="size-5" />
                 Scrieți-mi pe WhatsApp
+                <Sclipiri />
               </Buton>
               <Buton href="/cum-lucrez" varianta="contur">
                 Cum lucrez
@@ -96,17 +110,31 @@ export default function Acasa() {
               ))}
             </ul>
           </div>
-          <div className="relative">
-            <SimbolDecor
-              miscare="lenta"
-              className="absolute -right-16 -top-16 z-0 hidden w-56 opacity-90 lg:block"
+          <div className="relative mx-auto w-full max-w-[21rem] sm:max-w-[30rem]">
+            <CaleidoscopViu
+              centru={
+                fotografii.intampinare.src ? (
+                  <Image
+                    src={fotografii.intampinare.src}
+                    alt={fotografii.intampinare.alt}
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 220px, 40vw"
+                    className="object-cover"
+                    style={{ objectPosition: fotografii.intampinare.focus ?? "50% 30%" }}
+                  />
+                ) : (
+                  <div className="grid size-full place-items-center bg-menta p-[14%]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/brand/simbol-verde.svg" alt="" className="w-full" />
+                  </div>
+                )
+              }
             />
-            <Fotografie
-              foto={fotografii.intampinare}
-              locText="Aici vine fotografia de întâmpinare, de la ședința foto."
-              prioritar
-              className="relative z-10 aspect-[4/3] w-full sm:aspect-[4/3] lg:aspect-[4/5] lg:max-h-[34rem]"
-            />
+            <p className="mt-4 text-center text-sm text-verde-negru/60">
+              <span className="hidden lg:inline">Mișcați cursorul peste caleidoscop. </span>
+              {!fotografii.intampinare.src && "În mijloc vine fotografia de la ședința foto."}
+            </p>
           </div>
         </Container>
       </section>
@@ -201,7 +229,11 @@ export default function Acasa() {
               <li key={p.titlu} className="apare flex gap-5 rounded-[1.5rem] bg-menta/60 p-6 sm:p-7">
                 <div className="flex flex-col items-center gap-3">
                   <InsignaPictograma nume={p.pictograma} ton="alb" />
-                  {i < pasi.length - 1 && <span className="w-px flex-1 bg-smarald/20" />}
+                  {i < pasi.length - 1 && (
+                    <span className="relative w-0.5 flex-1 overflow-hidden rounded-full bg-smarald/15">
+                      <span className="umple absolute inset-0 rounded-full bg-sofran" />
+                    </span>
+                  )}
                 </div>
                 <div>
                   <span className="font-titluri text-lg font-semibold text-auriu-inchis">Pasul {i + 1}</span>
@@ -284,6 +316,14 @@ export default function Acasa() {
       {/* 6. Newsletter */}
       <section aria-labelledby="newsletter" className="relative overflow-hidden bg-galben-pal">
         <SimbolDecor className="absolute -right-24 -top-24 w-[26rem] opacity-[0.14] sm:-right-16 sm:w-[30rem]" />
+        <Stelute
+          stele={[
+            { x: "8%", y: "18%", marime: 12, culoare: "smarald" },
+            { x: "52%", y: "12%", marime: 16 },
+            { x: "70%", y: "78%", marime: 12, culoare: "smarald" },
+            { x: "30%", y: "86%", marime: 10 },
+          ]}
+        />
         <Container className="relative py-16 sm:py-20">
           <div className="apare max-w-2xl">
             <Supratitlu>O scrisoare pe lună</Supratitlu>

@@ -157,6 +157,62 @@
   }
 }
 
+/* Steluțele care sclipesc (fixe, dacă mișcarea e redusă din setări) */
+.sclipeste {
+  opacity: 0.55;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sclipeste {
+    animation: sclipeste 4s ease-in-out infinite both;
+  }
+  .unda {
+    animation: unda 900ms ease-in-out infinite alternate;
+  }
+}
+
+@keyframes sclipeste {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(0deg);
+  }
+  45%,
+  55% {
+    opacity: 0.95;
+    transform: scale(1) rotate(45deg);
+  }
+}
+
+@keyframes unda {
+  from {
+    transform: scaleY(0.25);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Linia dintre pași se umple pe măsură ce derulați */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .umple {
+      transform-origin: top;
+      animation: umple linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 60%;
+    }
+  }
+}
+
+@keyframes umple {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
 /* Tranziție fină între pagini (React <ViewTransition>) */
 ::view-transition-old(root),
 ::view-transition-new(root) {

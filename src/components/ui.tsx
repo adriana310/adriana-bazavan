@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
@@ -59,8 +60,57 @@ export function LocFotografie({
       className={`relative flex flex-col items-center justify-center gap-4 overflow-hidden rounded-[2rem] bg-menta p-8 text-center ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/simbol-verde.svg" alt="" className="w-2/5 max-w-48 opacity-90" />
+      <img src="/brand/simbol-verde.svg" alt="" className="rotire-lenta w-2/5 max-w-48 opacity-90" />
       <p className="max-w-56 text-sm text-verde-negru/70">{text}</p>
+    </div>
+  );
+}
+
+/**
+ * O fotografie de la ședința foto (din lib/fotografii.ts). Dacă încă nu a sosit, arată panoul cu caleidoscop.
+ * Cu `mobil`, pe telefon se folosește varianta pe verticală.
+ */
+export function Fotografie({
+  foto,
+  locText,
+  className = "",
+  sizes = "(min-width: 1024px) 40vw, 100vw",
+  prioritar = false,
+}: {
+  foto: { src: string | null; mobil?: string | null; alt: string; focus?: string };
+  locText: string;
+  className?: string;
+  sizes?: string;
+  prioritar?: boolean;
+}) {
+  if (!foto.src) return <LocFotografie text={locText} className={className} />;
+  const stil = { objectPosition: foto.focus ?? "50% 35%" };
+  return (
+    <div className={`relative overflow-hidden rounded-[2rem] bg-menta ${className}`}>
+      {foto.mobil ? (
+        <>
+          <Image
+            src={foto.mobil}
+            alt={foto.alt}
+            fill
+            sizes="100vw"
+            priority={prioritar}
+            className="object-cover sm:hidden"
+            style={stil}
+          />
+          <Image
+            src={foto.src}
+            alt={foto.alt}
+            fill
+            sizes={sizes}
+            priority={prioritar}
+            className="hidden object-cover sm:block"
+            style={stil}
+          />
+        </>
+      ) : (
+        <Image src={foto.src} alt={foto.alt} fill sizes={sizes} priority={prioritar} className="object-cover" style={stil} />
+      )}
     </div>
   );
 }

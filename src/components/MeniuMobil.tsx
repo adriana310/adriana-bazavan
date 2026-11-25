@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { Pictograma } from "@/components/Pictograma";
 import { meniu, site } from "@/lib/site";
 import { PictogramaWhatsApp } from "@/components/PictogramaWhatsApp";
 
@@ -66,9 +66,7 @@ export function MeniuMobil() {
                     onClick={() => setExtins(extins === item.href ? null : item.href)}
                   >
                     {item.titlu}
-                    <ChevronDown
-                      aria-hidden
-                      className={`size-6 transition-transform ${extins === item.href ? "rotate-180" : ""}`}
+                    <Pictograma nume="expand_more" className={`size-6 transition-transform ${extins === item.href ? "rotate-180" : ""}`}
                     />
                   </button>
                   <ul className={`grid gap-1 pb-4 ${extins === item.href ? "" : "hidden"}`}>
@@ -114,7 +112,7 @@ export function MeniuMobil() {
             href={site.telefonLink}
             className="flex items-center justify-center gap-2 rounded-full border border-smarald px-5 py-3.5 font-semibold text-smarald"
           >
-            <Phone aria-hidden className="size-5" />
+            <Pictograma nume="call" className="size-5" />
             {site.telefonAfisat}
           </a>
         </div>
@@ -131,7 +129,7 @@ export function MeniuMobil() {
         aria-controls="meniu-mobil"
         className="inline-flex items-center gap-2 rounded-full border border-linie px-4 py-2 text-[0.95rem] font-semibold text-smarald"
       >
-        {deschis ? <X aria-hidden className="size-5" /> : <Menu aria-hidden className="size-5" />}
+        {deschis ? <Pictograma nume="close" className="size-5" /> : <Pictograma nume="menu" className="size-5" />}
         {deschis ? "Închide" : "Meniu"}
       </button>
       {peClient && createPortal(panou, document.body)}

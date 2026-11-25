@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown } from "lucide-react";
+import { Pictograma } from "@/components/Pictograma";
 import { meniu } from "@/lib/site";
 
 function esteActiv(pathname: string, href: string) {
@@ -35,9 +35,7 @@ export function MeniuDesktop() {
             <li key={item.href} className="group relative">
               <Link href={item.href} className={clasaLink} aria-current={pathname === item.href ? "page" : undefined}>
                 {item.titlu}
-                <ChevronDown
-                  aria-hidden
-                  className="size-4 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
+                <Pictograma nume="expand_more" className="size-4 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
                 />
               </Link>
               {/* Al doilea nivel: apare la trecerea mouse-ului și la navigarea din tastatură */}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Pictograma } from "@/components/Pictograma";
 import { Logo } from "@/components/Logo";
 import { PictogramaWhatsApp } from "@/components/PictogramaWhatsApp";
 import { meniu, site } from "@/lib/site";
@@ -60,18 +60,18 @@ export function Subsol() {
             </li>
             <li>
               <a href={site.telefonLink} className="inline-flex items-center gap-2 hover:text-smarald hover:underline">
-                <Phone aria-hidden className="size-4 text-smarald" />
+                <Pictograma nume="call" className="size-4 text-smarald" />
                 {site.telefonAfisat}
               </a>
             </li>
             <li>
               <a href={`mailto:${site.email}`} className="inline-flex items-center gap-2 hover:text-smarald hover:underline">
-                <Mail aria-hidden className="size-4 shrink-0 text-smarald" />
+                <Pictograma nume="mail" className="size-4 shrink-0 text-smarald" />
                 {site.email}
               </a>
             </li>
             <li className="inline-flex items-center gap-2">
-              <MapPin aria-hidden className="size-4 text-smarald" />
+              <Pictograma nume="location_on" className="size-4 text-smarald" />
               {site.zona}
             </li>
           </ul>

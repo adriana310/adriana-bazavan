@@ -1,12 +1,15 @@
 // Texte de lucru; versiunea finală o scrie Adriana.
 import type { Metadata } from "next";
-import { Heart, Smile, Sparkles } from "lucide-react";
 import { AntetPagina, Bloc, DeCompletat, ScrietiMi } from "@/components/pagina";
+import { DateStructurate } from "@/components/DateStructurate";
+import { InsignaPictograma, type NumePictograma } from "@/components/Pictograma";
+import { serviciu } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Engleză pentru copii, unu la unu",
   description:
     "Ore de engleză unu la unu pentru copii, online sau în București. Pornim de la ce îl interesează pe copil, cu răbdare și un raport scris pentru părinți.",
+  alternates: { canonical: "/cum-lucrez/copii" },
 };
 
 const ceAud = [
@@ -15,15 +18,35 @@ const ceAud = [
   "Aș vrea să învețe totuși ceva.",
 ];
 
-const cumE = [
-  { icon: Heart, titlu: "Cu blândețe", text: "Copilul poate greși fără teamă. Nimeni nu e certat pentru o greșeală." },
-  { icon: Smile, titlu: "Confortabil", text: "Pornim de la ce îl interesează: un desen animat, o melodie, un sport." },
-  { icon: Sparkles, titlu: "Cu motivație", text: "Activități plăcute, care îl fac să vrea să revină data viitoare." },
+const cumE: { pictograma: NumePictograma; titlu: string; text: string }[] = [
+  { pictograma: "favorite", titlu: "Cu blândețe", text: "Copilul poate greși fără teamă. Nimeni nu e certat pentru o greșeală." },
+  {
+    pictograma: "sentiment_satisfied",
+    titlu: "Confortabil",
+    text: "Pornim de la ce îl interesează: un desen animat, o melodie, un sport.",
+  },
+  {
+    pictograma: "auto_awesome",
+    titlu: "Cu motivație",
+    text: "Activități plăcute, care îl fac să vrea să revină data viitoare.",
+  },
 ];
 
 export default function PentruCopii() {
   return (
     <>
+      <DateStructurate
+        date={{
+          "@context": "https://schema.org",
+          ...serviciu({
+            nume: "Engleză pentru copii, unu la unu",
+            descriere:
+              "Ore de engleză unu la unu pentru copii, online sau față în față în București, pornind de la ce îl interesează pe copil, cu un raport scris pentru părinți.",
+            cale: "/cum-lucrez/copii",
+            tip: "Ore de engleză pentru copii, meditații engleză",
+          }),
+        }}
+      />
       <AntetPagina
         firimituri={[{ titlu: "Cum lucrez", href: "/cum-lucrez" }]}
         supratitlu="Pentru copii"
@@ -34,17 +57,22 @@ export default function PentruCopii() {
             în scris ce am lucrat și ce urmează.
           </p>
         }
+        cale="/cum-lucrez/copii"
+        numeFirimitura="Pentru copii"
       />
 
       <Bloc supratitlu="Ce aud des de la părinți" titlu="Poate vă sună cunoscut">
         <ul className="grid gap-4 md:grid-cols-3">
           {ceAud.map((c) => (
-            <li key={c} className="rounded-[1.5rem] bg-galben-pal/60 p-6 font-titluri text-xl italic text-verde-negru">
+            <li
+              key={c}
+              className="apare liniatura rounded-[1.5rem] border border-linie bg-white p-6 font-titluri text-xl italic text-verde-negru"
+            >
               „{c}”
             </li>
           ))}
         </ul>
-        <p className="mt-8 max-w-2xl text-lg text-verde-negru/85">
+        <p className="apare mt-8 max-w-2xl text-lg text-verde-negru/85">
           De cele mai multe ori, copilul nu e „slab la engleză”. Încă nu s-a împrietenit cu ea.
         </p>
       </Bloc>
@@ -52,10 +80,8 @@ export default function PentruCopii() {
       <Bloc fundal="menta" supratitlu="Cum arată o oră" titlu="Seriozitate, cu bunătate">
         <ul className="grid gap-5 md:grid-cols-3">
           {cumE.map((c) => (
-            <li key={c.titlu} className="rounded-[1.5rem] bg-white p-6">
-              <span className="grid size-11 place-items-center rounded-2xl bg-galben-pal">
-                <c.icon aria-hidden className="size-5 text-auriu-inchis" />
-              </span>
+            <li key={c.titlu} className="apare rounded-[1.5rem] bg-white p-6">
+              <InsignaPictograma nume={c.pictograma} />
               <h3 className="mt-4 text-xl">{c.titlu}</h3>
               <p className="mt-2 text-verde-negru/85">{c.text}</p>
             </li>
@@ -66,7 +92,7 @@ export default function PentruCopii() {
         </div>
       </Bloc>
 
-      <ScrietiMi />
+      <ScrietiMi cale="/cum-lucrez/copii" titluPagina="Engleză pentru copii, cu Adriana Băzăvan" />
     </>
   );
 }

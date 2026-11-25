@@ -1,7 +1,8 @@
 // Texte de lucru; versiunea finală o scrie Adriana.
 import type { Metadata } from "next";
-import { CalendarClock, Mail, MapPin, Phone } from "lucide-react";
+import type { ReactNode } from "react";
 import { AntetPagina, Bloc, DeCompletat } from "@/components/pagina";
+import { Pictograma } from "@/components/Pictograma";
 import { PictogramaWhatsApp } from "@/components/PictogramaWhatsApp";
 import { FormularContact } from "./FormularContact";
 import { site } from "@/lib/site";
@@ -9,13 +10,29 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Scrieți-mi pe WhatsApp, sunați-mă sau lăsați un mesaj. Răspund în cel mult o zi lucrătoare.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function Contact() {
-  const cai = [
-    { icon: PictogramaWhatsApp, titlu: "WhatsApp", text: "Cel mai repede", href: site.whatsapp },
-    { icon: Phone, titlu: site.telefonAfisat, text: "Telefon", href: site.telefonLink },
-    { icon: Mail, titlu: site.email, text: "Email", href: `mailto:${site.email}` },
+  const cai: { pictograma: ReactNode; titlu: string; text: string; href: string }[] = [
+    {
+      pictograma: <PictogramaWhatsApp className="size-6 text-smarald" />,
+      titlu: "WhatsApp",
+      text: "Cel mai repede",
+      href: site.whatsapp,
+    },
+    {
+      pictograma: <Pictograma nume="call" className="size-6 text-smarald" />,
+      titlu: site.telefonAfisat,
+      text: "Telefon",
+      href: site.telefonLink,
+    },
+    {
+      pictograma: <Pictograma nume="mail" className="size-6 text-smarald" />,
+      titlu: site.email,
+      text: "Email",
+      href: `mailto:${site.email}`,
+    },
   ];
 
   return (
@@ -24,6 +41,8 @@ export default function Contact() {
         supratitlu="Contact"
         titlu="Scrieți-mi și vedem împreună de unde pornim"
         intro={<p>Răspund în cel mult o zi lucrătoare. Prima întâlnire e o discuție.</p>}
+        cale="/contact"
+        numeFirimitura="Contact"
       />
 
       <Bloc>
@@ -33,35 +52,31 @@ export default function Contact() {
               <a
                 key={c.text}
                 href={c.href}
-                className="flex items-center gap-4 rounded-[1.25rem] border border-linie p-5 transition-colors hover:bg-menta/50"
+                className="apare flex items-center gap-4 rounded-[1.25rem] border border-linie p-5 transition-colors hover:bg-menta/50"
               >
-                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-menta">
-                  <c.icon aria-hidden className="size-6 text-smarald" />
-                </span>
+                <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-menta">{c.pictograma}</span>
                 <span className="min-w-0">
                   <span className="block text-sm text-verde-negru/70">{c.text}</span>
                   <span className="block truncate font-titluri text-lg font-semibold text-smarald">{c.titlu}</span>
                 </span>
               </a>
             ))}
-            <div className="flex items-center gap-4 rounded-[1.25rem] border border-linie p-5">
+            <div className="apare flex items-center gap-4 rounded-[1.25rem] border border-linie p-5">
               <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-menta">
-                <MapPin aria-hidden className="size-6 text-smarald" />
+                <Pictograma nume="location_on" className="size-6 text-smarald" />
               </span>
               <span>
                 <span className="block text-sm text-verde-negru/70">Unde lucrez</span>
                 <span className="block font-titluri text-lg font-semibold text-smarald">{site.zona}</span>
               </span>
             </div>
-            <div className="rounded-[1.25rem] bg-galben-pal/60 p-5">
+            <div id="programare" className="apare scroll-mt-28 rounded-[1.25rem] bg-galben-pal/60 p-5">
               <p className="inline-flex items-center gap-2 font-semibold text-verde-negru">
-                <CalendarClock aria-hidden className="size-5 text-auriu-inchis" />
+                <Pictograma nume="calendar_month" className="size-5 text-auriu-inchis" />
                 Programați o discuție de 30 de minute
               </p>
               <div className="mt-3">
-                <DeCompletat>
-                  legătura pentru programarea discuției.
-                </DeCompletat>
+                <DeCompletat>legătura pentru programarea discuției.</DeCompletat>
               </div>
             </div>
           </div>

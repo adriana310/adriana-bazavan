@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/*
+  Paleta 2 · Smarald și șofran (aleasă de Adriana pe 16 noiembrie 2026).
+  Rolurile vin din PDF-ul „propuneri de paletă”, pagina 3.
+  Reguli: verdele smarald e pentru titluri, butoane, logo; nu facem fundaluri mari închise.
+  Șofranul simplu NU se folosește ca text pe fond deschis (contrast prea mic).
+*/
+@theme {
+  --color-smarald: #0a6b4c; /* titluri, butoane, logo */
+  --color-smarald-adanc: #08573e; /* hover pe butoane */
+  --color-verde-negru: #0b2f24; /* text curent */
+  --color-sofran: #f0b429; /* accent decorativ, fond de etichetă */
+  --color-auriu-inchis: #8a6200; /* auriu pentru text mic */
+  --color-corai-inchis: #b93a22; /* accent secundar, text */
+  --color-menta: #e6f5ec; /* secțiuni și panouri */
+  --color-galben-pal: #fff3cf; /* etichete și pictograme */
+  --color-corai-pal: #fde6e0; /* fond pentru accentul secundar */
+  --color-linie: #d5e9dd; /* chenare fine */
+
+  --font-titluri: var(--font-fraunces), Georgia, serif;
+  --font-text: var(--font-figtree), system-ui, sans-serif;
+}
+
+/* În stratul „base”, ca să poată fi suprascrise de clasele Tailwind */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--color-verde-negru);
+    font-family: var(--font-text);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-titluri);
+    color: var(--color-smarald);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-galben-pal);
+    color: var(--color-verde-negru);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-sofran);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+/* Sublinierea groasă, în șofran, din machete („Un obiectiv clar”) */
+.subliniere {
+  background-image: linear-gradient(var(--color-sofran), var(--color-sofran));
+  background-repeat: no-repeat;
+  background-size: 100% 0.14em;
+  background-position: 0 92%;
+  padding-bottom: 0.04em;
+}
+
+/* Urma discretă de caiet: liniatură fină, folosită puțin (Caietul cu idei) */
+.liniatura {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 31px,
+    var(--color-linie) 31px,
+    var(--color-linie) 32px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

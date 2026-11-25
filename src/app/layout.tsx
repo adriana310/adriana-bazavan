@@ -25,8 +25,14 @@ const figtree = Figtree({
   display: "swap",
 });
 
+// Adresa de bază pentru imaginile de previzualizare: domeniul principal din Vercel
+// (acum adresa de test .vercel.app, după lansare adrianabazavan.ro, automat).
+const adresaBaza = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : site.url;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(adresaBaza),
   title: {
     default: "Adriana Băzăvan · English Teacher, engleză unu la unu",
     template: "%s · Adriana Băzăvan",

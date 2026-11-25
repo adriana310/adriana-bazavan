@@ -26,6 +26,7 @@ export type NumePictograma =
   | "favorite"
   | "flag"
   | "footprint"
+  | "format_quote"
   | "forum"
   | "forward_10"
   | "groups"

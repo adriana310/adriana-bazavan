@@ -107,7 +107,7 @@ export default async function Poveste({ params }: PageProps<"/biblioteca/povesti
           </ul>
 
           {p.text && (
-            <article className="liniatura rounded-[1.5rem] border border-linie p-6 sm:p-8" lang="en">
+            <article className="rounded-[1.5rem] border border-linie border-l-4 border-l-corai-pal p-6 sm:p-8" lang="en">
               <h2 className="text-2xl">Read along</h2>
               <div className="mt-4 space-y-4 text-lg leading-8">
                 {p.text.map((paragraf, i) => (

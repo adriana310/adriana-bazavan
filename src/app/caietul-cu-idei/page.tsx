@@ -52,7 +52,7 @@ export default function CaietulCuIdei() {
               <li key={a.slug} className="apare">
                 <Link
                   href={`/caietul-cu-idei/${a.slug}`}
-                  className="group liniatura flex h-full flex-col rounded-[1.5rem] border border-linie bg-white p-6 transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_45px_-25px_rgba(11,47,36,0.45)]"
+                  className="group flex h-full flex-col border-l-4 border-l-sofran/70 rounded-[1.5rem] border border-linie bg-white p-6 transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_45px_-25px_rgba(11,47,36,0.45)]"
                 >
                   <span className="text-sm text-auriu-inchis">
                     {a.tema} · {dataRomana(a.data)}
@@ -70,7 +70,7 @@ export default function CaietulCuIdei() {
         </Bloc>
       )}
 
-      <section className="liniatura">
+      <section>
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
           <p className="apare text-[0.8rem] font-semibold uppercase tracking-[0.1em] text-auriu-inchis">Temele caietului</p>
           <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -12,6 +12,7 @@ import { SageataMana, SubliniereMana } from "@/components/Mana";
 import { Separator, SimbolDecor } from "@/components/Simbol";
 import { CardResursa } from "@/components/CardResursa";
 import { CaleidoscopViu } from "@/components/CaleidoscopViu";
+import { PasiDerulare } from "@/components/PasiDerulare";
 import { Sclipiri, Stelute } from "@/components/Stelute";
 import { Distribuie } from "@/components/Distribuie";
 import { resurse } from "@/lib/biblioteca";
@@ -199,10 +200,10 @@ export default function Acasa() {
         </Container>
       </section>
 
-      {/* 3. Cum lucrez: titlul rămâne pe loc, pașii vin pe rând */}
+      {/* 3. Cum lucrez: pasul din mijlocul ecranului se aprinde; în stânga, caleidoscopul se rotește cu derularea */}
       <section aria-labelledby="pasi" className="border-y border-linie/70 bg-white">
-        <Container className="grid gap-10 py-16 sm:py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-          <div className="lg:sticky lg:top-28 lg:self-start">
+        <Container className="py-16 sm:py-20">
+          <PasiDerulare pasi={pasi}>
             <Supratitlu>Cum lucrez</Supratitlu>
             <h2 id="pasi" className="mt-3 text-3xl sm:text-[2.6rem]">
               Pas cu pas, până la obiectiv
@@ -223,26 +224,7 @@ export default function Acasa() {
             <Buton href="/cum-lucrez" varianta="contur" className="mt-6">
               Prețuri și detalii
             </Buton>
-          </div>
-          <ol className="grid gap-4">
-            {pasi.map((p, i) => (
-              <li key={p.titlu} className="apare flex gap-5 rounded-[1.5rem] bg-menta/60 p-6 sm:p-7">
-                <div className="flex flex-col items-center gap-3">
-                  <InsignaPictograma nume={p.pictograma} ton="alb" />
-                  {i < pasi.length - 1 && (
-                    <span className="relative w-0.5 flex-1 overflow-hidden rounded-full bg-smarald/15">
-                      <span className="umple absolute inset-0 rounded-full bg-sofran" />
-                    </span>
-                  )}
-                </div>
-                <div>
-                  <span className="font-titluri text-lg font-semibold text-auriu-inchis">Pasul {i + 1}</span>
-                  <h3 className="mt-1 text-xl sm:text-2xl">{p.titlu}</h3>
-                  <p className="mt-2 text-verde-negru/85">{p.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+          </PasiDerulare>
         </Container>
       </section>
 
@@ -259,12 +241,10 @@ export default function Acasa() {
             {[1, 2, 3].map((n) => (
               <figure
                 key={n}
-                className="apare liniatura relative flex min-h-48 flex-col justify-between overflow-hidden rounded-[1.5rem] border border-linie bg-white p-6 pt-10"
+                className="apare relative flex min-h-48 flex-col rounded-[1.5rem] border border-linie border-l-4 border-l-sofran/70 bg-white p-6"
               >
-                <span aria-hidden className="absolute left-5 top-0 font-titluri text-7xl leading-none text-sofran">
-                  „
-                </span>
-                <blockquote className="font-titluri text-lg italic text-verde-negru/60">
+                <Pictograma nume="format_quote" className="size-9 text-sofran" />
+                <blockquote className="mt-3 flex-1 font-titluri text-lg italic text-verde-negru/60">
                   Aici vine părerea unui părinte, publicată numai cu acordul lui scris.
                 </blockquote>
                 <figcaption className="mt-4 text-sm text-verde-negru/60">Părinte · în așteptarea acordului</figcaption>

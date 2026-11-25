@@ -52,7 +52,7 @@ export default function PentruAdulti() {
           {ceAud.map((c) => (
             <li
               key={c}
-              className="apare liniatura rounded-[1.5rem] border border-linie bg-white p-6 font-titluri text-xl italic text-verde-negru"
+              className="apare rounded-[1.5rem] border border-linie border-l-4 border-l-sofran/70 bg-white p-6 font-titluri text-xl italic text-verde-negru"
             >
               „{c}”
             </li>

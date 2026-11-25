@@ -87,7 +87,7 @@
     .apare {
       animation: apare linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 45%;
+      animation-range: entry 0% cover 28%;
     }
     /* Caleidoscopul se rotește încet pe măsură ce derulați, ca jucăria */
     .rotire-derulare {
@@ -101,7 +101,7 @@
 @keyframes apare {
   from {
     opacity: 0;
-    transform: translateY(22px);
+    transform: translateY(56px) scale(0.96);
   }
   to {
     opacity: 1;
@@ -235,16 +235,6 @@
   mask: var(--pictograma) center / contain no-repeat;
 }
 
-/* Urma discretă de caiet: liniatură fină, folosită puțin (Caietul cu idei) */
-.liniatura {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 31px,
-    var(--color-linie) 31px,
-    var(--color-linie) 32px
-  );
-}
 
 @media (prefers-reduced-motion: reduce) {
   html {

@@ -73,13 +73,13 @@ export function PlayerAudio({ src, titlu }: { src: string; titlu: string }) {
   const procent = durata ? (pozitie / durata) * 100 : 0;
 
   return (
-    <div className="relative overflow-hidden rounded-[1.5rem] bg-smarald p-5 text-white sm:p-6">
+    <div className="relative overflow-hidden rounded-[1.5rem] border border-linie bg-menta p-5 text-verde-negru sm:p-6">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/brand/simbol-alb.svg"
+        src="/brand/simbol-verde-sofran.svg"
         alt=""
         aria-hidden
-        className={`pointer-events-none absolute -right-10 -top-10 w-44 opacity-10 ${canta ? "rotire-lenta" : ""}`}
+        className={`pointer-events-none absolute -right-10 -top-10 w-44 opacity-[0.14] ${canta ? "rotire-lenta" : ""}`}
         style={{ animationDuration: "24s" }}
       />
       <audio ref={audio} src={src} preload="metadata" />
@@ -88,7 +88,7 @@ export function PlayerAudio({ src, titlu }: { src: string; titlu: string }) {
           type="button"
           onClick={comuta}
           aria-label={canta ? `Pauză: ${titlu}` : `Ascultați: ${titlu}`}
-          className="grid size-16 shrink-0 place-items-center rounded-full bg-sofran text-verde-negru transition-transform hover:scale-105"
+          className="grid size-16 shrink-0 place-items-center rounded-full bg-smarald text-white transition-transform hover:scale-105"
         >
           <Pictograma nume={canta ? "pause" : "play_arrow"} className="size-9" />
         </button>
@@ -109,10 +109,10 @@ export function PlayerAudio({ src, titlu }: { src: string; titlu: string }) {
             }}
             className="h-2 w-full cursor-pointer appearance-none rounded-full accent-sofran"
             style={{
-              background: `linear-gradient(to right, var(--color-sofran) ${procent}%, rgba(255,255,255,0.25) ${procent}%)`,
+              background: `linear-gradient(to right, var(--color-sofran) ${procent}%, rgba(10,107,76,0.15) ${procent}%)`,
             }}
           />
-          <div className="mt-2 flex justify-between text-sm text-white/80 tabular-nums">
+          <div className="mt-2 flex justify-between text-sm text-verde-negru/70 tabular-nums">
             <span>{timp(pozitie)}</span>
             <span>{timp(durata)}</span>
           </div>
@@ -132,7 +132,7 @@ export function PlayerAudio({ src, titlu }: { src: string; titlu: string }) {
           type="button"
           onClick={() => sari(-10)}
           aria-label="Înapoi 10 secunde"
-          className="grid size-10 place-items-center rounded-full hover:bg-white/10"
+          className="grid size-10 place-items-center rounded-full text-smarald hover:bg-white"
         >
           <Pictograma nume="replay_10" className="size-6" />
         </button>
@@ -140,7 +140,7 @@ export function PlayerAudio({ src, titlu }: { src: string; titlu: string }) {
           type="button"
           onClick={() => sari(10)}
           aria-label="Înainte 10 secunde"
-          className="grid size-10 place-items-center rounded-full hover:bg-white/10"
+          className="grid size-10 place-items-center rounded-full text-smarald hover:bg-white"
         >
           <Pictograma nume="forward_10" className="size-6" />
         </button>
@@ -148,7 +148,7 @@ export function PlayerAudio({ src, titlu }: { src: string; titlu: string }) {
           type="button"
           onClick={schimbaViteza}
           aria-label={`Viteza de redare: ${viteza}x`}
-          className="rounded-full border border-white/30 px-3 py-1.5 text-sm font-semibold tabular-nums hover:bg-white/10"
+          className="rounded-full border border-smarald/30 px-3 py-1.5 text-sm font-semibold text-smarald tabular-nums hover:bg-white"
         >
           {viteza}×
         </button>

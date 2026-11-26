@@ -81,8 +81,8 @@ export default async function Poveste({ params }: PageProps<"/biblioteca/povesti
           ) : p.youtube ? (
             <VideoYouTube id={p.youtube} titlu={p.titlu} />
           ) : (
-            <div className="flex items-center gap-4 rounded-[1.5rem] bg-smarald/90 p-6 text-white">
-              <span className="grid size-16 shrink-0 place-items-center rounded-full bg-white/20">
+            <div className="flex items-center gap-4 rounded-[1.5rem] border border-linie bg-menta p-6 text-verde-negru">
+              <span className="grid size-16 shrink-0 place-items-center rounded-full bg-white text-smarald">
                 <Pictograma nume="headphones" className="size-8" />
               </span>
               <p className="text-lg">Înregistrarea acestei povești vine în curând.</p>
